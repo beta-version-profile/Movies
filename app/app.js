@@ -55,15 +55,10 @@ const handlerOnHashChange = async ({
   }
 
   const id = Number(hash.replace(/#/, ''))
-  const movieObj = await getCurrentMovie(id)
+  const movieObj = await geData(getTargetMovie(id))
   const { results } = await geData(getRecommendations(id))
 
   renderCard(movieObj, results)
-}
-
-const getCurrentMovie = async id => {
-  const movie = await geData(getTargetMovie(id))
-  return movie
 }
 
 const handlerOnSubmit = async e => {
